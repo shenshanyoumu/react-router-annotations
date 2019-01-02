@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { __RouterContext as RouterContext } from "react-router";
 
 class Link extends React.Component {
+  // 默认的Link组件使用TouchableHighlight组件
   static defaultProps = {
     component: TouchableHighlight,
     replace: false
@@ -16,6 +17,7 @@ class Link extends React.Component {
     if (!event.defaultPrevented) {
       const { to, replace } = this.props;
 
+      // 基于history对象的replace/push方法处理路由跳转
       if (replace) {
         history.replace(to);
       } else {

@@ -26,6 +26,7 @@ class StackContainer extends Component {
     pathname: this.props.match.url
   };
 
+  // react16之前版本的context特性实现
   getChildContext() {
     return {
       stack: {

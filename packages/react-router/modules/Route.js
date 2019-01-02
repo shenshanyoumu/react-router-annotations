@@ -41,6 +41,7 @@ class Route extends React.Component {
             children = null;
           }
 
+          {/* 支持react16版本引入的render props特性，即children可以是渲染函数 */}
           if (typeof children === "function") {
             children = children(props);
 
