@@ -7,12 +7,13 @@ import warning from "tiny-warning";
 import RouterContext from "./RouterContext";
 import matchPath from "./matchPath";
 
+// 当前组件是否有子组件
 function isEmptyChildren(children) {
   return React.Children.count(children) === 0;
 }
 
 /**
- * The public API for matching a single path and rendering.
+ * 在应用中真正发生的路由匹配动作
  */
 class Route extends React.Component {
   render() {
@@ -21,9 +22,11 @@ class Route extends React.Component {
         {context => {
           invariant(context, "You should not use <Route> outside a <Router>");
 
+          //location对象，包括路由匹配需要的路径属性
           const location = this.props.location || context.location;
+
           const match = this.props.computedMatch
-            ? this.props.computedMatch // <Switch> already computed the match for us
+            ? this.props.computedMatch // 表示基于<Switch> 组件计算的匹配信息
             : this.props.path
               ? matchPath(location.pathname, this.props)
               : context.match;
@@ -41,6 +44,7 @@ class Route extends React.Component {
           if (typeof children === "function") {
             children = children(props);
 
+            //在开发环境中针对为undefined的子组件渲染，抛出警告信息
             if (children === undefined) {
               if (__DEV__) {
                 const { path } = this.props;
@@ -56,7 +60,8 @@ class Route extends React.Component {
               children = null;
             }
           }
-
+         
+         {/* 由于Route组件可以嵌套因此需要向下传递props */}
           return (
             <RouterContext.Provider value={props}>
               {children && !isEmptyChildren(children)

@@ -16,14 +16,12 @@ class Switch extends React.Component {
         {context => {
           invariant(context, "You should not use <Switch> outside a <Router>");
 
+          // 页面路由发生变化后得到的location对象
           const location = this.props.location || context.location;
 
           let element, match;
-
-          // We use React.Children.forEach instead of React.Children.toArray().find()
-          // here because toArray adds keys to all child elements and we do not want
-          // to trigger an unmount/remount for two <Route>s that render the same
-          // component at different URLs.
+          
+          // 将location对象的路径字符串与Switch组件中所有子组件的路径字符串匹配
           React.Children.forEach(this.props.children, child => {
             if (match == null && React.isValidElement(child)) {
               element = child;
@@ -36,6 +34,7 @@ class Switch extends React.Component {
             }
           });
 
+          // 注意下面当匹配成功后，就返回对应的子组件的拷贝
           return match
             ? React.cloneElement(element, { location, computedMatch: match })
             : null;

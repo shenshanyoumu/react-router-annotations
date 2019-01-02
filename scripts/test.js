@@ -7,6 +7,7 @@ function exec(cmd) {
 
 const cwd = process.cwd();
 
+// 启动各个package项目的测试
 [
   "react-router",
   "react-router-dom",

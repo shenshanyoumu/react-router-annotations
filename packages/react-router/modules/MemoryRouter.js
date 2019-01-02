@@ -5,10 +5,12 @@ import warning from "tiny-warning";
 
 import Router from "./Router";
 
-/**
- * The public API for a <Router> that stores location in memory.
- */
+//在SSR中，一般使用MemoryRouter组件来保存路由变化
+//因为在SSR中，不存在hashRouter/BrowserRouter
+
 class MemoryRouter extends React.Component {
+
+  // 基于内存创建的history对象，常用于SSR
   history = createHistory(this.props);
 
   render() {
