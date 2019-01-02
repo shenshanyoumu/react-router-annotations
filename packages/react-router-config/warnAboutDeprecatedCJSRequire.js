@@ -5,6 +5,8 @@ var printWarning = function() {};
 if (process.env.NODE_ENV !== "production") {
   printWarning = function(format, subs) {
     var index = 0;
+
+    // 
     var message =
       "Warning: " +
       (subs.length > 0
@@ -26,6 +28,8 @@ if (process.env.NODE_ENV !== "production") {
   };
 }
 
+// 由于整个项目的源码组织变化，在引入react-router-config的子模块时注意引入方式
+// 注意下面字符串中存在两个“%s”替换字段，因此printWarning函数第二个参数[member,member]
 module.exports = function(member) {
   printWarning(
     'Please use `require("react-router-config").%s` instead of `require("react-router-config/%s")`. ' +

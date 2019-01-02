@@ -26,6 +26,7 @@ if (process.env.NODE_ENV !== "production") {
   };
 }
 
+// ES6语法形式编写
 export default function(member) {
   printWarning(
     'Please use `import { %s } from "react-router-config"` instead of `import %s from "react-router-config/%s"`. ' +

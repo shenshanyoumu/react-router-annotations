@@ -5,7 +5,7 @@ import hoistStatics from "hoist-non-react-statics";
 import Route from "./Route";
 
 /**
- * A public higher-order component to access the imperative API
+ * 基于HOC形式对wrapped的组件添加路由属性
  */
 function withRouter(Component) {
   const C = props => {
@@ -33,6 +33,7 @@ function withRouter(Component) {
     };
   }
 
+  // 对于静态方法的拷贝
   return hoistStatics(C, Component);
 }
 

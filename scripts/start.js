@@ -5,5 +5,6 @@ function exec(cmd) {
   execSync(cmd, { stdio: "inherit", env: process.env });
 }
 
+// 切换工作目录，启动开发站点
 process.chdir(path.resolve(__dirname, "../website"));
 exec("npm start");

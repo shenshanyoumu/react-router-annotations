@@ -16,6 +16,8 @@ module.exports = {
   globals: {
     __DEV__: true
   },
+
+  // 在测试中，引入其他模块时的映射
   moduleNameMapper: {
     "^react-router$": "<rootDir>/../react-router/cjs/react-router.js",
     "^react-router-config$": mappedModule

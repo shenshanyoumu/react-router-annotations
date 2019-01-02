@@ -5,19 +5,20 @@ import invariant from "tiny-invariant";
 import Lifecycle from "./Lifecycle";
 import RouterContext from "./RouterContext";
 
-/**
- * The public API for prompting the user before navigating away from a screen.
- */
+//当发生路由变化之前给用户的提示，注意路由变化的生命周期分为enter新路由、update路由和离开旧路由
 function Prompt({ message, when = true }) {
   return (
     <RouterContext.Consumer>
       {context => {
         invariant(context, "You should not use <Prompt> outside a <Router>");
 
+        //staticContext上下文用于测试和SSR
         if (!when || context.staticContext) return null;
 
+        //基于history对象提供的block来拦截
         const method = context.history.block;
-
+        
+        //注意下面路由变化的生命周期
         return (
           <Lifecycle
             onMount={self => {

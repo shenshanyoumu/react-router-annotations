@@ -15,6 +15,7 @@ class Router extends React.Component {
   constructor(props) {
     super(props);
 
+    // 整个前端路由目前都是基于H5的history对象来实现的
     this.state = {
       location: props.history.location
     };
@@ -27,7 +28,10 @@ class Router extends React.Component {
     this._isMounted = false;
     this._pendingLocation = null;
 
+    // 对于staticContext则无法监听页面路由变化
     if (!props.staticContext) {
+
+      // 监听页面路由变化，由于基于history对象监听因此不会触发浏览器的默认行为
       this.unlisten = props.history.listen(location => {
         if (this._isMounted) {
           this.setState({ location });

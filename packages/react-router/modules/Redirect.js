@@ -8,7 +8,11 @@ import RouterContext from "./RouterContext";
 import generatePath from "./generatePath";
 
 /**
- * The public API for navigating programmatically with a component.
+ * 
+ * @param {*} computedMatch表示待匹配的跳转路由
+ * to 表示跳转的目的地路由 
+ * push 表示是否对history对象进行push操作，否则进行replace操作
+ * 注意进行push操作后无法实现history的"前进"和"后退"操作
  */
 function Redirect({ computedMatch, to, push = false }) {
   return (
@@ -19,6 +23,8 @@ function Redirect({ computedMatch, to, push = false }) {
         const { history, staticContext } = context;
 
         const method = push ? history.push : history.replace;
+
+        {/* 创建location对象 */}
         const location = createLocation(
           computedMatch
             ? typeof to === "string"

@@ -4,6 +4,7 @@ const cache = {};
 const cacheLimit = 10000;
 let cacheCount = 0;
 
+// 将给定的路径字符串编译为正则表达式形式，并缓存结果
 function compilePath(path) {
   if (cache[path]) return cache[path];
 

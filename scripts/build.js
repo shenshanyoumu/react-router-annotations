@@ -1,4 +1,6 @@
 const path = require("path");
+
+// Node提供的创建子进程的模块，目的是充分利用多CPU核处理能力
 const execSync = require("child_process").execSync;
 
 function exec(cmd) {
@@ -7,8 +9,7 @@ function exec(cmd) {
 
 const cwd = process.cwd();
 
-// Note: We don't currently have a build step for react-router-native.
-// Instead, we use the source files directly.
+// 同步构建各个package目录下的项目
 ["react-router", "react-router-dom", "react-router-config"].forEach(
   packageName => {
     process.chdir(path.resolve(__dirname, "../packages/" + packageName));

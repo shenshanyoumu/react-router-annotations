@@ -103,6 +103,7 @@ const umd = [
   }
 ];
 
+// Webpack比较适合与Web项目的打包，而rollup适合库的打包
 let config;
 switch (process.env.BUILD_ENV) {
   case "cjs":
