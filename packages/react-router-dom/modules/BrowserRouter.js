@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import warning from "tiny-warning";
 
 /**
- * The public API for a <Router> that uses HTML5 history.
+ * 基于 H5 history对象的router组件
  */
 class BrowserRouter extends React.Component {
   history = createHistory(this.props);

@@ -7,7 +7,7 @@ import RouterContext from "./RouterContext";
 import matchPath from "./matchPath";
 
 /**
- * The public API for rendering the first <Route> that matches.
+ * Switch组件用于渲染第一个匹配的路由组件
  */
 class Switch extends React.Component {
   render() {

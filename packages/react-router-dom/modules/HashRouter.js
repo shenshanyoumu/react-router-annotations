@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import warning from "tiny-warning";
 
 /**
- * The public API for a <Router> that uses window.location.hash.
+ * 基于window.location.hash创建的Router组件，浏览器环境中页面的URL hash部分变化并不会触发页面重新加载
  */
 class HashRouter extends React.Component {
   history = createHistory(this.props);

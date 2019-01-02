@@ -8,6 +8,8 @@ import RouterContext from "./RouterContext";
  * The public API for putting history on context.
  */
 class Router extends React.Component {
+
+  // 表示路由路径的根路径匹配
   static computeRootMatch(pathname) {
     return { path: "/", url: "/", params: {}, isExact: pathname === "/" };
   }
@@ -54,6 +56,7 @@ class Router extends React.Component {
     if (this.unlisten) this.unlisten();
   }
 
+  // 注意下面将路由上下文对象封装到Router容器组件中
   render() {
     return (
       <RouterContext.Provider
