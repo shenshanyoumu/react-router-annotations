@@ -72,7 +72,7 @@ class StaticRouter extends React.Component {
   render() {
     const { basename = "", context = {}, location = "/", ...rest } = this.props;
 
-    // 
+    // 模拟的history对象
     const history = {
       createHref: path => addLeadingSlash(basename + createURL(path)),
       action: "POP",
@@ -80,7 +80,7 @@ class StaticRouter extends React.Component {
       push: this.handlePush,
       replace: this.handleReplace,
 
-      // 下面动作要么警告要么没有实现
+      // 下面动作要么警告要么没有实现，其意义在于测试需要和SSR需要
       go: staticHandler("go"),
       goBack: staticHandler("goBack"),
       goForward: staticHandler("goForward"),

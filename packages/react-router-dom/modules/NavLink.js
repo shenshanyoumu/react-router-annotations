@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 
 import Link from "./Link";
 
+// 可以使用classnames模块来合并多个class名称
 function joinClassnames(...classnames) {
   return classnames.filter(i => i).join(" ");
 }
 
 /**
- * A <Link> wrapper that knows if it's "active" or not.
+ * Link组件的封装组件，用于判定当前Link组件是否被触发
  */
 function NavLink({
   "aria-current": ariaCurrent = "page",
@@ -35,6 +36,8 @@ function NavLink({
       exact={exact}
       strict={strict}
       location={location}
+
+      // 目前采用render props特性来实现逻辑复用；用于复用Route组件的部分属性
       children={({ location, match }) => {
         const isActive = !!(isActiveProp
           ? isActiveProp(match, location)
@@ -69,6 +72,7 @@ if (__DEV__) {
     "true"
   ]);
 
+  // 页面的导航类NavLink 组件，内部封装Link组件
   NavLink.propTypes = {
     "aria-current": ariaCurrentType,
     activeClassName: PropTypes.string,
